@@ -1,0 +1,43 @@
+<template name="placesNearby">
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Places Nearby</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      {{#if loc}}
+
+      {{#ionList class="places-nearby"}}
+
+        {{#each placesNearby}}
+          {{#ionItem buttonRight=true avatar=true class="place-result" id="{{id}}"}}
+            <img src="{{image_url}}" alt="" />
+            <h2>{{name}}</h2>
+            <ul class="place-meta">
+              <li>{{distanceInMiles distance}} miles away</li>
+              {{#if rating}}
+              <li>{{rating}}</li>
+              {{/if}}
+              {{#if opening_hours.open_now}}
+                <li>Open</li>
+              {{else}}
+                <li>Closed</li>
+              {{/if}}
+              <li>{{priceLevel price_level}}</li>
+            </ul>
+
+            <button class="button button-light">{{> ionIcon icon="ios-arrow-right"}}</button>
+
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+
+      {{/if}}
+
+    {{/ionContent}}
+  {{/ionView}}
+
+
+</template>

@@ -1,0 +1,27 @@
+.place-result
+
+  .place-meta
+    display flex
+    flex-flow row nowrap
+    margin 0
+
+    li
+      flex 0 0 auto
+      margin 0
+      padding 5px
+      font-size 0.8em
+
+      &:before
+        margin-right 10px
+        content "\2022"
+
+      &:first-of-type
+        padding-left 0
+        margin 0
+
+        &:before
+          display none
+
+  button.button
+    top 50%
+    transform translate(0,-50%)

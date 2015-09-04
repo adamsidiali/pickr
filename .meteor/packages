@@ -14,3 +14,12 @@ tracker
 blaze
 accounts-google
 http
+meteoric:ionic-sass
+meteoric:ionicons-sass
+meteoric:ionic
+fourseven:scss@2.0.0
+dburles:google-maps
+mdg:geolocation
+aldeed:autoform
+aldeed:simple-schema
+oauth1

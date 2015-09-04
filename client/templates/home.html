@@ -1,5 +1,19 @@
 <template name="home">
 
-  <h1>Hello, world!</h1>
-  
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{stateTitle}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      {{#with place}}
+      
+        <h1>{{name}}</h1>
+
+      {{/with}}
+
+    {{/ionContent}}
+  {{/ionView}}
+
 </template>
