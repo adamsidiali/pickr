@@ -21,10 +21,14 @@ Template.home.created = function () {
 }
 
 var getPlaces = function (loc) {
-  Meteor.call("placeSearch", loc.lat+","+loc.lng, 4000, function (err,res) {
-    Session.set("place", res[0]);
-    console.log(res[0]);
-    IonLoading.hide();
+  Meteor.call("searchYelp", "food", false, loc.lat, loc.lng, function (err,res) {
+    if (err) {
+      console.log(err);
+    } else {
+      Session.set("place", res.businesses[0]);
+      IonLoading.hide();
+      console.log(res);
+    }
   });
 }
 

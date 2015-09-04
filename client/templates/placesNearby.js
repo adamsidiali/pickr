@@ -9,11 +9,15 @@ Template.placesNearby.created = function () {
       var loc = Geolocation.latLng();
       console.log(loc);
       Meteor.call("searchYelp", "food", false, loc.lat, loc.lng, function (err,res) {
-        Session.set("placesNearby", res.businesses);
-        IonLoading.hide();
-        console.log(res);
+        if (err) {
+          console.log(err);
+        } else {
+          Session.set("placesNearby", res.businesses);
+          IonLoading.hide();
+          console.log(res);
+        }
+        c.stop();
       });
-      c.stop();
     }
   });
 

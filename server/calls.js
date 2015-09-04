@@ -77,12 +77,24 @@ Meteor.methods({
       parameters.location = 'Seattle';
 
     // Results limited to 5
-    parameters.limit = 5;
+    parameters.limit = 20;
 
-    parameters.radius_filter = 4000;
+    parameters.radius_filter = 8046;
+
+    var data = oauthBinding.get(url, parameters).data;
+
+    _.each(data.businesses, function (e) {
+      if (Places.findOne({"id": e.id})) {
+        return;
+      } else {
+        Places.insert(e,function (err, res) {
+          console.log("inserted new place" + res);
+        });
+      }
+    });
 
     // Only return .data because that is how yelp formats its responses
-    return oauthBinding.get(url, parameters).data;
+    return data;
   },
 
   yelpBusiness: function(id) {
