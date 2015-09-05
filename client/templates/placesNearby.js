@@ -1,7 +1,7 @@
 Template.placesNearby.created = function () {
 
   IonLoading.show({
-    customTemplate: '<i class="icon ion-loading-c"></i>'
+    customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Finding places...</h3>'
   });
 
   Tracker.autorun(function(c){

@@ -41,6 +41,12 @@ Template.home.helpers({
 
   "place": function () {
     return Session.get("place");
-  }
+  },
+
+
+  "distanceInMiles": function (distance) {
+    var mi = distance*.000621371;
+    return mi.toFixed(1);
+  },
 
 });

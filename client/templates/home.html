@@ -1,5 +1,11 @@
 <template name="home">
 
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='android-menu'}}
+    </button>
+  {{/contentFor}}
+
   {{#contentFor "headerTitle"}}
     <h1 class="title">{{stateTitle}}</h1>
   {{/contentFor}}
@@ -8,12 +14,7 @@
     {{#ionContent}}
 
       {{#with place}}
-
-        <img src="{{image_url}}" alt="" />
-        <h1>{{name}}</h1>
-        <p>
-          {{snippet_text}}
-        </p>
+        {{>singlePlace}}
 
       {{/with}}
 

@@ -1,5 +1,11 @@
 <template name="placesNearby">
 
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='android-menu'}}
+    </button>
+  {{/contentFor}}
+
   {{#contentFor "headerTitle"}}
     <h1 class="title">Places Nearby</h1>
   {{/contentFor}}

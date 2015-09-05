@@ -1,0 +1,40 @@
+<template name="singlePlace">
+
+  <div class="single-place">
+    <span class="distance">{{distanceInMiles distance}} miles away</span>
+    <img class="single-place-image" src="{{image_url}}" alt="" />
+    <h2 class="place-name">{{name}}</h2>
+    <ul class="single-place-meta">
+      <li class="rating"><img src="{{rating_img_url}}" alt="" /></li>
+      <!-- <li class="snippet">{{snippet_text}}</li> -->
+    </ul>
+
+    {{#ionList class="single-place-actions list-inset"}}
+        {{#if phone}}
+        {{#ionItem buttonRight=true avatar=false}}
+          <h2>Call</h2>
+          <p>
+            {{display_phone}}
+          </p>
+          <button class="button button-assertive">
+            {{> ionIcon icon="ios-telephone"}}
+          </button>
+        {{/ionItem}}
+        {{/if}}
+
+        {{#if location.address}}
+        {{#ionItem buttonRight=true avatar=false}}
+          <h2>Get directions</h2>
+          <p>
+            {{location.display_address}}
+          </p>
+          <button class="button button-assertive">
+            {{> ionIcon icon="android-navigate"}}
+          </button>
+        {{/ionItem}}
+        {{/if}}
+    {{/ionList}}
+
+  </div>
+
+</template>
