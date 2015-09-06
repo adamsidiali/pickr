@@ -7,8 +7,8 @@
     {{#ionSideMenus}}
 
       {{#ionSideMenu}}
-        <div class="bar bar-header bar-assertive">
-          <h1 class="title">Pickr</h1>
+        <div class="bar bar-header bar-dark">
+          <h1 class="title sidemenu-title">pickr</h1>
         </div>
         <div class="content has-header">
           <div class="list">
@@ -32,15 +32,21 @@
 
       {{#ionNavView}}
 
-        <!-- {{#ionTabs class="tabs-dark tabs-icon-top"}}
-          {{#if isAndroid}}
-            {{> ionTab title="" path="home" iconOff="android-home" iconOn="android-home"}}
-            {{> ionTab title="" path="placesNearby" iconOff="android-location" iconOn="android-location"}}
-          {{else}}
-            {{> ionTab title="Home" path="home" iconOff="ios-home" iconOn="ios-home"}}
-            {{> ionTab title="Nearby" path="placesNearby" iconOff="ios-location" iconOn="ios-location"}}
-          {{/if}}
-        {{/ionTabs}} -->
+      {{#if isAndroid}}
+        {{#ionTabs class="tabs-stripe tabs-bottom tabs-light tabs-background-light"}}
+            {{> ionTab title="Recommended" path="home" iconOff="thumbsup" iconOn="thumbsup"}}
+            {{> ionTab title="Browse" path="" iconOff="images" iconOn="android-location"}}
+            {{> ionTab title="Nearby" path="placesNearby" iconOff="map" iconOn="map"}}
+            {{> ionTab title="My Places" path="" iconOff="android-star" iconOn="android-star"}}
+          {{/ionTabs}}
+      {{else}}
+          {{#ionTabs class="tabs-stripe tabs-bottom tabs-light tabs-background-light"}}
+            {{> ionTab title="Recommended" path="home" iconOff="thumbsup" iconOn="thumbsup"}}
+            {{> ionTab title="Browse" path="" iconOff="images" iconOn="ios-location"}}
+            {{> ionTab title="Nearby" path="placesNearby" iconOff="map" iconOn="map"}}
+            {{> ionTab title="My Places" path="" iconOff="android-star" iconOn="android-star"}}
+        {{/ionTabs}}
+      {{/if}}
 
         {{> yield}}
 

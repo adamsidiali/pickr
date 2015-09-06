@@ -1,26 +1,27 @@
 Template.placesNearby.created = function () {
 
-  IonLoading.show({
-    customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Finding places...</h3>'
-  });
+  if (Session.get("placesNearby") == null) {
+    IonLoading.show({
+      customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Finding places...</h3>'
+    });
 
-  Tracker.autorun(function(c){
-    if (Geolocation.latLng()) {
-      var loc = Geolocation.latLng();
-      console.log(loc);
-      Meteor.call("searchYelp", "food", false, loc.lat, loc.lng, function (err,res) {
-        if (err) {
-          console.log(err);
-        } else {
-          Session.set("placesNearby", res.businesses);
-          IonLoading.hide();
-          console.log(res);
-        }
-        c.stop();
-      });
-    }
-  });
-
+    Tracker.autorun(function(c){
+      if (Geolocation.latLng()) {
+        var loc = Geolocation.latLng();
+        console.log(loc);
+        Meteor.call("searchYelp", "food", false, loc.lat, loc.lng, function (err,res) {
+          if (err) {
+            console.log(err);
+          } else {
+            Session.set("placesNearby", res.businesses);
+            IonLoading.hide();
+            console.log(res);
+          }
+          c.stop();
+        });
+      }
+    });
+  }
 
 }
 

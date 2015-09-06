@@ -1,19 +1,20 @@
 <template name="home">
 
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{> ionIcon icon='android-menu'}}
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear pull-right">
+      {{> ionIcon icon='android-more-horizontal'}}
     </button>
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    <h1 class="title">{{stateTitle}}</h1>
+    <h1 class="title">{{> ionIcon icon='thumbsup'}} {{stateTitle}}</h1>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
 
       {{#with place}}
+
         {{>singlePlace}}
 
       {{/with}}
