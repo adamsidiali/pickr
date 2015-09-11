@@ -1,24 +1,20 @@
 Template.placesNearby.created = function () {
 
-  if (Session.get("placesNearby") == null) {
+  if (!Session.get("placesNearby")) {
     IonLoading.show({
-      customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Finding places...</h3>'
+      customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Finding you...</h3>'
     });
 
     Tracker.autorun(function(c){
       if (Geolocation.latLng()) {
         var loc = Geolocation.latLng();
         console.log(loc);
-        Meteor.call("searchYelp", "food", false, loc.lat, loc.lng, function (err,res) {
-          if (err) {
-            console.log(err);
-          } else {
-            Session.set("placesNearby", res.businesses);
-            IonLoading.hide();
-            console.log(res);
-          }
-          c.stop();
+        Session.set("loc", loc);
+        IonLoading.show({
+          customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Picking places to eat...</h3>'
         });
+        c.stop();
+        getPlaces(loc);
       }
     });
   }
@@ -60,4 +56,25 @@ Template.placesNearby.helpers({
     }
   }
 
-})
+});
+
+
+Template.placesNearby.events({
+
+  "click .place-result": function (e,t) {
+    var places = Session.get("placesNearby");
+    var slug = this.id;
+
+    console.log(slug);
+
+    for (var i=0; i<places.length; i++) {
+      if (places[i].id == slug) {
+        console.log(places[i]);
+        Session.set("place", places[i]);
+        //Router.go("/nearby/"+slug);
+      }
+    }
+
+  }
+
+});

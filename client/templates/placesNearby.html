@@ -1,10 +1,14 @@
 <template name="placesNearby">
 
-  <!-- {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{> ionIcon icon='android-menu'}}
-    </button>
-  {{/contentFor}} -->
+  {{#if isAndroid}}
+
+    {{#contentFor "headerButtonLeft"}}
+      <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+        {{> ionIcon icon='android-menu'}}
+      </button>
+    {{/contentFor}}
+
+  {{/if}}
 
   {{#contentFor "headerButtonRight"}}
     <button class="button button-clear pull-right">
@@ -24,8 +28,8 @@
       {{#ionList class="places-nearby"}}
 
         {{#each placesNearby}}
-          <div class="card">
-          {{#ionItem buttonRight=true avatar=true class="place-result" id="{{id}}"}}
+          <a href="{{pathFor 'singlePlace' placeId=id}}">
+          {{#ionItem buttonRight=true avatar=true class="place-result" id=id}}
             <img src="{{image_url}}" alt="" />
             <h2>{{name}}</h2>
             <ul class="place-meta">
@@ -38,7 +42,7 @@
             <button class="button button-clear">{{> ionIcon icon="ios-arrow-right"}}</button>
 
           {{/ionItem}}
-        </div>
+        </a>
         {{/each}}
       {{/ionList}}
 

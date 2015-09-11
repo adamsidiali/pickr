@@ -1,4 +1,4 @@
-Template.home.created = function () {
+Template.recommendedPlace.created = function () {
   Session.set("stateTitle", "Recommended");
 
   if (!Session.get("recommendedPlace")) {
@@ -13,24 +13,27 @@ Template.home.created = function () {
         console.log(loc);
         Session.set("loc", loc);
         IonLoading.show({
-          customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Finding the best place to eat...</h3>'
+          customTemplate: '<i class="icon ion-loading-c"></i><br><h3>Picking the best place to eat...</h3>'
         });
         c.stop();
         getPlaces(loc);
       }
     });
   }
-
-
 }
 
-Template.home.helpers({
 
-  "stateTitle": function () {
-    return Session.get("stateTitle");
+Template.recommendedPlace.helpers({
+
+  "distanceInMiles": function (distance) {
+    var mi = distance*.000621371;
+    return mi.toFixed(1);
   },
 
 
+  "recommendedPlace": function () {
+    return Session.get("recommendedPlace");
+  }
 
 
 });

@@ -1,27 +1,21 @@
-<template name="singlePlace">
+<template name="recommendedPlace">
 
-  {{#contentFor "headerButtonLeft"}}
-    {{>ionNavBackButton text="Back" path="placesNearby"}}
-  {{/contentFor}}
-
-    {{#with place}}
   {{#contentFor "headerTitle"}}
-    <h1 class="title">{{name}}</h1>
+    <h1 class="title">{{> ionIcon icon='thumbsup'}} Recommended</h1>
   {{/contentFor}}
 
-  {{/with}}
 
   {{#ionView}}
     {{#ionContent}}
 
-      {{#with place}}
+      {{#with recommendedPlace}}
 
       <div class="single-place">
         <span class="distance">{{distanceInMiles distance}} miles away</span>
         <img class="single-place-image" src="{{image_url}}" alt="" />
         <h2 class="place-name">{{name}}</h2>
         <ul class="single-place-meta">
-          <li class="rating">{{> starsRating rating=rating size="lg"}}</li>
+          <li class="rating"><img src="{{rating_img_url}}" alt="" /></li>
           <!-- <li class="snippet">{{snippet_text}}</li> -->
         </ul>
 

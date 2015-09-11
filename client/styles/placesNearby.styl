@@ -1,23 +1,29 @@
-.place-result
 
-  .place-meta
-    display flex
-    flex-flow row nowrap
-    margin 0
+a
+  text-decoration none !important
 
-    li
-      flex 0 0 auto
+  .place-result
+
+    .place-meta
+      display flex
+      display -webkit-flex
+      flex-flow row nowrap
+      -webkit-flex-flow row nowrap
       margin 0
-      padding 5px
-      font-size 0.8em
 
-      &:before
-        margin-right 10px
-        content "\2022"
-
-      &:first-of-type
-        padding-left 0
+      li
+        flex 0 0 auto
         margin 0
+        padding 5px
+        font-size 0.8em
 
         &:before
-          display none
+          margin-right 10px
+          content "\2022"
+
+        &:first-of-type
+          padding-left 0
+          margin 0
+
+          &:before
+            display none
