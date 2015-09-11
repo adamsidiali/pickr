@@ -1,12 +1,12 @@
 <template name="singlePlace">
 
   {{#contentFor "headerButtonLeft"}}
-    {{>ionNavBackButton text="Back" path="placesNearby"}}
+    {{>ionNavBackButton icon="arrow-left-a" text="" path="placesNearby"}}
   {{/contentFor}}
 
     {{#with place}}
   {{#contentFor "headerTitle"}}
-    <h1 class="title">{{name}}</h1>
+    <h1 class="title">{{> ionIcon icon="android-pin"}} {{name}}</h1>
   {{/contentFor}}
 
   {{/with}}
@@ -19,7 +19,6 @@
       <div class="single-place">
         <span class="distance">{{distanceInMiles distance}} miles away</span>
         <img class="single-place-image" src="{{image_url}}" alt="" />
-        <h2 class="place-name">{{name}}</h2>
         <ul class="single-place-meta">
           <li class="rating">{{> starsRating rating=rating size="lg"}}</li>
           <!-- <li class="snippet">{{snippet_text}}</li> -->

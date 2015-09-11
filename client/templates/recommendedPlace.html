@@ -15,8 +15,7 @@
         <img class="single-place-image" src="{{image_url}}" alt="" />
         <h2 class="place-name">{{name}}</h2>
         <ul class="single-place-meta">
-          <li class="rating"><img src="{{rating_img_url}}" alt="" /></li>
-          <!-- <li class="snippet">{{snippet_text}}</li> -->
+          <li class="rating">{{> starsRating rating=rating size="lg"}}</li>
         </ul>
 
         {{#ionList class="card single-place-actions"}}

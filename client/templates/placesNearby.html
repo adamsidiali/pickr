@@ -11,7 +11,7 @@
   {{/if}}
 
   {{#contentFor "headerButtonRight"}}
-    <button class="button button-clear pull-right">
+    <button class="button button-clear pull-right" data-ion-popover="_viewOptions">
       {{> ionIcon icon='android-more-horizontal'}}
     </button>
   {{/contentFor}}
@@ -29,14 +29,14 @@
 
         {{#each placesNearby}}
           <a href="{{pathFor 'singlePlace' placeId=id}}">
-          {{#ionItem buttonRight=true avatar=true class="place-result" id=id}}
-            <img src="{{image_url}}" alt="" />
+          {{#ionItem buttonRight=true thumbnail=true class="place-result" id=id}}
+            <img src="{{image_url}}" alt="" class="pull-left" />
             <h2>{{name}}</h2>
+            {{#if rating}}
+            {{> starsRating rating=rating size="sm"}}
+            {{/if}}
             <ul class="place-meta">
               <li>{{distanceInMiles distance}} miles away</li>
-              {{#if rating}}
-              <li>{{rating}}</li>
-              {{/if}}
             </ul>
 
             <button class="button button-clear">{{> ionIcon icon="ios-arrow-right"}}</button>
